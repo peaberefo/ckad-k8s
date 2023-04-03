@@ -1,0 +1,30 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: "2023-02-18T00:55:25Z"
+  name: developer
+  namespace: blue
+  resourceVersion: "3734"
+  uid: 78dd3761-0184-4975-89f9-6672ab14966a
+rules:
+- apiGroups:
+  - ""
+  resourceNames:
+  - dark-blue-app
+  resources:
+  - pods
+  verbs:
+  - get
+  - watch
+  - create
+  - delete
+# Permits the user with this role can create deployments in the blue namespace
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - get
+  - watch
+  - create
+  - delete
